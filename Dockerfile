@@ -1,5 +1,5 @@
 FROM ubuntu:latest
-MAINTAINER Ilampirai Nambi <mailme@ilam.in>
+MAINTAINER Watchara Chiamchit <yoh300@hotmail.com>
 
 # Install packages
 RUN apt-get update 
