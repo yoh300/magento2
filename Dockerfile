@@ -53,7 +53,8 @@ ENV PHP_POST_MAX_SIZE 10M
 
 #Get Magento files
 RUN rm -fr /var/www/html
-RUN git clone https://github.com/magento/magento2.git /app/
+RUN git clone https://github.com/magento/magento2.git /app/ && git clone https://github.com/magento/magento2-sample-data.git && \
+  cp -rf magento2-sample-data/* /app/ && rm -rf magento2-sample-data
 RUN chmod -R o+w /app/pub /app/var
 RUN chmod o+w /app/app/etc
 RUN cd /app && /usr/bin/php -r "readfile('https://getcomposer.org/installer');" | /usr/bin/php
