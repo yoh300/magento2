@@ -62,8 +62,9 @@ RUN cd /app && wget http://sourceforge.net/projects/adminer/files/latest/downloa
 RUN cd /app && mv download\?source\=files adminer.php
 
 RUN mkdir -p /app && rm -fr /var/www/html && ln -s /app /var/www/html
+RUN find /app -type f -exec chmod 600 {} \; && find /app -type d -exec chmod 700 {} \; && chown -R www-data:www-data /app
 # Add volumes for MySQL 
-VOLUME  ["/etc/mysql", "/var/lib/mysql" ]
+VOLUME  ["/etc/mysql", "/var/lib/mysql", "/app"]
 
 EXPOSE 80 3306 22
 CMD ["/run.sh"]
